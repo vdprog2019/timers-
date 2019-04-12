@@ -1,0 +1,49 @@
+<html>
+    
+<head>   
+    
+    <style>
+    
+        .ball{
+            width: 200px;
+            height: 200px;
+            margin-top: 0px;
+        }
+        
+    </style>
+    
+</head>
+
+<body>
+    
+    <div>
+        <input type="button" value="" onclick="on_mouse_move()">
+    </div>
+    
+    <div>
+        <img class="ball" src="%D0%BC%D1%8F%D1%87.png" id="b">
+    </div>
+    
+    
+    
+    
+    
+    <script>
+        
+       var margin = 0; 
+        function moveBall ()
+        {
+            margin++;
+            document.getElementById("b").style.marginTop = margin + "px";
+        }
+         
+        function on_mouse_move(){
+          //откладывает запуск функции moveBall на 1500 сек
+          //  setTimeout(moveBall, 1500);
+        setInterval(moveBall, 150);
+        }
+        
+    </script>
+</body>
+
+</html>

@@ -33,6 +33,8 @@
         <button  onclick="remove()" id="rev">
             <img src="http://s1.iconbird.com/ico/0612/prettyoffice/w256h2561339405847Delete256.png" class="start">
         </button>
+        
+       <label>Скорость мяча: <input type="number" value="1" id="number"></label>
     </div>
     
     <div>
@@ -57,7 +59,7 @@
                 return;
             }
             else{  
-                 margin = margin+50;
+                 margin = margin+parseInt(document.getElementById("number").value);
                  document.getElementById("b").style.marginTop = margin + "px";
               }
             
@@ -80,7 +82,7 @@
             clearTimeout(idTimer);
               idTimer = -1;
             
-            margin = 0; 
+           
             
           
             
@@ -89,6 +91,7 @@
         function remove()
         {
             document.getElementById("b").style.marginTop = "0px";
+             margin = 0; 
         }
         
         

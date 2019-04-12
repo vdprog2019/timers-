@@ -10,6 +10,11 @@
             margin-top: 0px;
         }
         
+        
+        .start{
+            width: 100px;
+            height: 100px;
+        }
     </style>
     
 </head>
@@ -17,7 +22,17 @@
 <body>
     
     <div>
-        <input type="button" value="" onclick="on_mouse_move()">
+        <button  onclick="on_mouse_move()">
+                <img class="start" src="start.png">
+        </button>
+        
+        <button   onclick="stopBall()">
+                <img class="start" src="stop.png">
+        </button>
+        
+        <button  onclick="remove()" id="rev">
+            <img src="http://s1.iconbird.com/ico/0612/prettyoffice/w256h2561339405847Delete256.png" class="start">
+        </button>
     </div>
     
     <div>
@@ -30,18 +45,54 @@
     
     <script>
         
-       var margin = 0; 
+        var margin = 0; 
+        //сохранит id таймера
+        var idTimer = -1;
+        
         function moveBall ()
         {
-            margin++;
-            document.getElementById("b").style.marginTop = margin + "px";
+            if( parseInt(margin) + 345  > parseInt(document.documentElement.clientWidth) )
+            {
+               
+                return;
+            }
+            else{  
+                 margin = margin+50;
+                 document.getElementById("b").style.marginTop = margin + "px";
+              }
+            
         }
          
         function on_mouse_move(){
-          //откладывает запуск функции moveBall на 1500 сек
+          //откладывает запуск функции moveBall на 1500 мили сек
           //  setTimeout(moveBall, 1500);
-        setInterval(moveBall, 150);
+            
+            
+        //делает вызов функции moveBall бесконечно с интервалом 150 мили сек  
+            if(idTimer == -1)
+                idTimer = setInterval(moveBall, 150);
         }
+            
+        function stopBall()
+        {
+          
+            //отсановка таймера
+            clearTimeout(idTimer);
+              idTimer = -1;
+            
+            margin = 0; 
+            
+          
+            
+        }
+        
+        function remove()
+        {
+            document.getElementById("b").style.marginTop = "0px";
+        }
+        
+        
+        
         
     </script>
 </body>

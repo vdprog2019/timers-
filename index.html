@@ -34,36 +34,45 @@
 <body>
     
     <div>
-        <button  onclick="on_mouse_move()">
+        <button  onclick="random_course()">
                 <img class="start" src="start.png">
         </button>
         
-        <button   onclick="stopBall()">
+        <button   onclick="stop_ball()">
                 <img class="start" src="stop.png">
         </button>
         
-        <button  onclick="remove()" id="rev">
+        <button  onclick="stop_timer()" id="rev">
             <img src="http://s1.iconbird.com/ico/0612/prettyoffice/w256h2561339405847Delete256.png" class="start">
         </button>
         
 
-        <button onclick="left()"> 
+        <button onclick="start_timer('left')"> 
             <img class="start" src="left.png" >
        </button>
 
 
-       <button onclick="right()"> 
+       <button onclick="start_timer('right')"> 
                 <img class="start" src="right.png" >
         </button>
+        
+        <button onclick="start_timer('down')">
+                <img class="start" src="http://s1.iconbird.com/ico/0912/ToolbarIcons/w256h2561346685452ArrowDown.png">
+        </button>
+        
+        <button onclick="start_timer('up')">
+                <img class="start" src="http://s1.iconbird.com/ico/0912/ToolbarIcons/w256h2561346685452ArrowUp.png">
+        </button>
+        
 
-       <label>Скорость мяча: <input type="number" value="1" id="number"></label>
+       <label>Скорость мяча: <input type="number" value="1" id="speed"></label>
 
        
        
     </div>
     
     <div>
-        <img class="ball" src="%D0%BC%D1%8F%D1%87.png" id="b">
+        <img class="ball" src="%D0%BC%D1%8F%D1%87.png" id="ball_image">
     </div>
 
     
@@ -73,116 +82,105 @@
     
     <script>
         
-        //var pageHeight = document.documentElement.clientHeight;
-        //alert(pageHeight);
         
-
-        var margin = 0; 
-        //сохранит id таймера
+        var marginTop = 0; 
+        var marginLeft = 0;
         var idTimer = -1;
+        var saveBall = document.getElementById("ball_image");
         
-        function moveBall ()
-        {
-            if( parseInt(margin) + 953  > parseInt(document.documentElement.clientWidth) )
-            {
-               
-                return;
-            }
-            else{  
-                 margin = margin+parseInt(document.getElementById("number").value);
-                 document.getElementById("b").style.marginTop = margin + "px";
-                 
-              }
-            
-        }
-
-
-
-
-
-
-        //ДВИГАЕТСЯ СТРЕЛКОЙ ВПРАВО 
-
-        function mouse_move_right()
-        {
-            if( parseInt(margin) + 503  > parseInt(document.documentElement.clientWidth) )
-            {
-            
-                return;
-            }
-            else{  
-                 margin = margin+parseInt(document.getElementById("number").value);
-                 var leftMove = document.getElementById("b").style.marginLeft = margin + "px";
-                 
-              }
-        }
-
         
-        function right()
+        function random_course()
         {
-            if(idTimer == -1)
-                idTimer = setInterval(mouse_move_right, 150);
+            
         }
         
-
-
-
-        //ДВИГАЕТСЯ СТРЕЛКОЙ ВЛЕВО
-
-        var tmp = leftMove  ;
-        function mouse_move_left()
-        {
-            
-            
-            //margin = margin+parseInt(document.getElementById("number").value);
-            document.getElementById("b").style.marginRight = tmp + "px";
-            
-        }
-
-
-        function left()
-        {
-            if(idTimer == -1)
-                idTimer = setInterval(mouse_move_left, 150);
-        }
-
-
-
-
-
-
-         
-        function on_mouse_move(){
-          //откладывает запуск функции moveBall на 1500 мили сек
-          //  setTimeout(moveBall, 1500);
-            
-            
-        //делает вызов функции moveBall бесконечно с интервалом 150 мили сек  
-            if(idTimer == -1)
-                idTimer = setInterval(moveBall, 150);
-        }
-            
-        function stopBall()
-        {
-          
-            //отсановка таймера
-            clearTimeout(idTimer);
-              idTimer = -1;
-            
+        
+        function start_timer(move_direction){
+            switch(move_direction)
+                {
+                    case "left":
+                        {
+                              if(idTimer == -1)
+                                    idTimer = setInterval(move_ball_left, 150);
+                            break;
+                        }
+                    case "down":
+                        {
+                              if(idTimer == -1)
+                                    idTimer = setInterval(move_ball_down, 150);
+                            break;
+                        }
+                    case "right":
+                        {
+                              if(idTimer == -1)
+                                    idTimer = setInterval(move_ball_right, 150);
+                            break;
+                        }
+                    case "up":
+                        {
+                              if(idTimer == -1)
+                                    idTimer = setInterval(move_ball_up, 150);
+                            break;
+                        }
            
-            
-          
-            
+                }
         }
         
-        function remove()
+        function stop_ball()
         {
-            document.getElementById("b").style.marginTop = "0px";
-            document.getElementById("b").style.marginLeft = "0px"
-             margin = 0; 
+            marginLeft = 0;
+            marginTop = 0; 
+            update_graphic();
         }
         
         
+        function stop_timer()
+        {
+              clearTimeout(idTimer);
+              idTimer = -1;
+        }
+        
+        function move_ball_left()
+        {
+             marginTop = marginTop - get_speed();
+          
+            update_graphic();
+        }
+        
+        
+        function move_ball_right()
+        {
+            marginTop = marginTop + get_speed();
+            update_graphic();
+        }
+        
+        function move_ball_down()
+        {
+            marginLeft = marginLeft + get_speed();
+            update_graphic();
+        }
+        
+        
+        function move_ball_up()
+        {
+             marginLeft = marginLeft - get_speed();
+            update_graphic();
+        }
+        
+        
+        
+        function get_speed()
+        {
+               return parseInt(document.getElementById("speed").value);
+               
+        }
+        
+        
+        function update_graphic()
+        {
+            saveBall.style.marginTop = marginLeft+"px";
+            saveBall.style.marginLeft = marginTop+"px";
+        }
         
         
     </script>

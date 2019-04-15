@@ -1,13 +1,25 @@
+
+
 <html>
     
 <head>   
     
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+
+
     <style>
     
         .ball{
             width: 200px;
             height: 200px;
             margin-top: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
         }
         
         
@@ -34,12 +46,26 @@
             <img src="http://s1.iconbird.com/ico/0612/prettyoffice/w256h2561339405847Delete256.png" class="start">
         </button>
         
+
+        <button onclick="left()"> 
+            <img class="start" src="left.png" >
+       </button>
+
+
+       <button onclick="right()"> 
+                <img class="start" src="right.png" >
+        </button>
+
        <label>Скорость мяча: <input type="number" value="1" id="number"></label>
+
+       
+       
     </div>
     
     <div>
         <img class="ball" src="%D0%BC%D1%8F%D1%87.png" id="b">
     </div>
+
     
     
     
@@ -47,13 +73,17 @@
     
     <script>
         
+        //var pageHeight = document.documentElement.clientHeight;
+        //alert(pageHeight);
+        
+
         var margin = 0; 
         //сохранит id таймера
         var idTimer = -1;
         
         function moveBall ()
         {
-            if( parseInt(margin) + 345  > parseInt(document.documentElement.clientWidth) )
+            if( parseInt(margin) + 953  > parseInt(document.documentElement.clientWidth) )
             {
                
                 return;
@@ -61,9 +91,66 @@
             else{  
                  margin = margin+parseInt(document.getElementById("number").value);
                  document.getElementById("b").style.marginTop = margin + "px";
+                 
               }
             
         }
+
+
+
+
+
+
+        //ДВИГАЕТСЯ СТРЕЛКОЙ ВПРАВО 
+
+        function mouse_move_right()
+        {
+            if( parseInt(margin) + 503  > parseInt(document.documentElement.clientWidth) )
+            {
+            
+                return;
+            }
+            else{  
+                 margin = margin+parseInt(document.getElementById("number").value);
+                 var leftMove = document.getElementById("b").style.marginLeft = margin + "px";
+                 
+              }
+        }
+
+        
+        function right()
+        {
+            if(idTimer == -1)
+                idTimer = setInterval(mouse_move_right, 150);
+        }
+        
+
+
+
+        //ДВИГАЕТСЯ СТРЕЛКОЙ ВЛЕВО
+
+        var tmp = leftMove  ;
+        function mouse_move_left()
+        {
+            
+            
+            //margin = margin+parseInt(document.getElementById("number").value);
+            document.getElementById("b").style.marginRight = tmp + "px";
+            
+        }
+
+
+        function left()
+        {
+            if(idTimer == -1)
+                idTimer = setInterval(mouse_move_left, 150);
+        }
+
+
+
+
+
+
          
         function on_mouse_move(){
           //откладывает запуск функции moveBall на 1500 мили сек
@@ -91,6 +178,7 @@
         function remove()
         {
             document.getElementById("b").style.marginTop = "0px";
+            document.getElementById("b").style.marginLeft = "0px"
              margin = 0; 
         }
         

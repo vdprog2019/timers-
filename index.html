@@ -82,7 +82,7 @@
     
     <script>
         
-        
+        var randomDirection = 0;
         var marginTop = 0; 
         var marginLeft = 0;
         var idTimer = -1;
@@ -91,7 +91,55 @@
         
         function random_course()
         {
-            
+            var r = getRandomInt(1,8);
+
+            switch(r)
+                {
+                    case 1:
+                        {
+                            start_timer('right');
+                            break;
+                        }
+                        
+                    case 2:
+                        {
+                            start_timer('left');
+                            break;
+                        }
+                    case 3:
+                        {
+                            start_timer('up');
+                            break;
+                        }
+                    case 4:
+                        {
+                            start_timer('down');
+                            break;
+                        }
+                    case 5:
+                        {
+                            move_ball_right_up();
+                            break;
+                        }
+                    case 6:
+                        {
+                            move_ball_left_up();
+                            break;
+                        }
+                    case 7:
+                        {
+                            move_ball_left_down();
+                            break;
+                        }
+                    case 8:
+                        {
+                            move_ball_right_down();
+                            break;
+                        }
+                        
+                    
+                        
+                }
         }
         
         
@@ -122,6 +170,31 @@
                                     idTimer = setInterval(move_ball_up, 150);
                             break;
                         }
+                    case "right_up":
+                        {
+                            if(idTimer == -1)
+                                    idTimer = setInterval(move_ball_right_up, 150);
+                            break;
+                        }
+                    case "left_up":
+                        {
+                            if(idTimer == -1)
+                                    idTimer = setInterval(move_ball_left_up, 150);
+                            break;
+                        }
+                    case "right_down":
+                        {
+                            if(idTimer == -1)
+                                    idTimer = setInterval(move_ball_right_down, 150);
+                            break;
+                        }
+                    case "left_down":
+                        {
+                            if(idTimer == -1)
+                                    idTimer = setInterval(move_ball_left_down, 150);
+                            break;
+                        }
+                        
            
                 }
         }
@@ -163,16 +236,48 @@
         
         function move_ball_up()
         {
-             marginLeft = marginLeft - get_speed();
+            marginLeft = marginLeft - get_speed();
             update_graphic();
         }
         
         
         
+        
+        function move_ball_right_up()
+        {
+            marginTop = marginTop + get_speed();
+            marginLeft = marginLeft - get_speed();
+            update_graphic();            
+        }
+        
+        function move_ball_left_up()
+        {
+            marginTop = marginTop - get_speed();
+            marginLeft = marginLeft - get_speed();
+            update_graphic();            
+        }
+        
+        function move_ball_left_down()
+        {
+            marginTop = marginTop - get_speed();
+            marginLeft = marginLeft + get_speed();
+            update_graphic();            
+        }
+        
+        
+        function move_ball_right_down()
+        {
+            marginLeft = marginLeft + get_speed();
+            marginTop = marginTop + get_speed();
+            update_graphic();            
+        }
+        
+        
+        
+        
         function get_speed()
         {
-               return parseInt(document.getElementById("speed").value);
-               
+               return parseInt(document.getElementById("speed").value);    
         }
         
         
@@ -182,6 +287,9 @@
             saveBall.style.marginLeft = marginTop+"px";
         }
         
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
         
     </script>
 </body>

@@ -15,66 +15,134 @@
     <style>
     
         .ball{
-            width: 200px;
-            height: 200px;
-            margin-top: 0px;
-            margin-left: 0px;
+            width: 100px;
+            height: 100px;
+            margin-top: 18%;
+            margin-left: 45%;
             margin-right: 0px;
+            z-index: 1;
         }
         
         
         .start{
-            width: 100px;
-            height: 100px;
+            width: 40px;
+            height: 40px;
         }
+
+        
+        .border{
+            margin-left: 80%;
+        }
+
+        
+        .buttons_start_stop{
+            margin-top: -133px;
+        }
+
+        .border_ball{
+            border: 3px solid black;
+            widows: 450px;
+            height: 550px;
+            margin-top: 80px;
+            z-index: 1
+        }
+        
     </style>
     
 </head>
 
 <body>
-    
+
     <div>
-        <button  onclick="random_course()">
-                <img class="start" src="start.png">
-        </button>
-        
-        <button   onclick="stop_ball()">
-                <img class="start" src="stop.png">
-        </button>
-        
-        <button  onclick="stop_timer()" id="rev">
-            <img src="http://s1.iconbird.com/ico/0612/prettyoffice/w256h2561339405847Delete256.png" class="start">
-        </button>
-        
+        <table class="border" border="1">
+                        <tr>
+                            <th>
+                                <button onclick="start_timer('left_up')">
+                                    <img class="start" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAbFBMVEX///8jHyAgHB329fUAAAAnIyMZExXT09NqaGkPBwkaFRYcFxjj4+Pm5uZgXV5UUVIzMDBaV1grJyhAPT41MTIKAACWlZWAfn7x8fG+vb4UDhBHRUXMy8uKiIlwbm6xsLB5d3elpKTa2dk8OTp6z87pAAADpklEQVR4nO3dgXKiMBSF4RCjXQTUVVBKrVr7/u9YqVvXCpGQhMm9zPkeoNN/JORS2lQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8Kh83f3x6LDdhy56sI1UNfMpVvlr6Kg75aeSkW+JOoXuuinzmfe+mjqELvuxqAYJvCQeQ6dd7dVAgZEsJqHjvi3mQxVGxUfouFo59X+X+TFfhK6rnYvBAiP5Gbqu9jLYMrwUrigsxEEL89B1tSELk2XoutqQhfE2dF1tyEKVha6rDVhY7ELHfRuusNpQuJMOVyiLTRm67aqrUFqZxzGNS1R0FsrVetpfvtimocNuOgqT5cRG6Kp7XVdp9Tf0d+iq804Tc0/svpfGJJ6B7BnsFswTTfbDmMQEbctox2e9Fs1mGs4XquHUxvhTNJ1L+a5F48mb7YVq/mzBNbGlUPcDVKYXarNwvUp0iSxvN41CuTpPtYkcL9Rm4VRkke5dBsfElsKJyFbaRH5rsbVQpOvxXKjthSJLRpOoKRTZWnuhMruj6gpFOpa1qC0czVrUF45lLT4pHMmm8azw2Vrkc7t5Wigyyf9CfV4osin7T7GjcASbRlch/02js5D9ptFdyH2AMyhkvmmYFIqU81O/UeFlX+T71G9WyHmAMyy8rEWuP4EzLeS7aRgXst00zAu5DnA9CpkOcH0Kea7FXoUsN41+hRwHuJ6FIou4Xah9C/m9tuldyG4t9i98NsBR/BQtCpltGjaFvAY4q0JWA5xdIacBzrKQ0Vq0LeSzaVgXshng7Au5vLZxKGTy2salkMem4VTIYtNwK+SwaTgWMhjgXAvpbxrOheRf27gXUn9t46GQ+ADno5D2axsvhaQ3jcbJHzK3+QtQwgNcJh/++MDyyBXCA9zbw/Vle9QD3QHu+Hshytj2r7BTsmvx932weLf+QinVAe4c363EauPwlcgOcPvqdmCb41EPKdWn/mypqkTKJFY7x7MCyCaK/e4tz5db9/NkCG8awtNJD8xe29igPMB5Qv+p35l+LRZkjsN0pH/qV5TObXWRzTSJictAQYp2LaqX0N+aL7q1SOPATy/S9t+7qcgckOUubX3qr06hvy+PWi/U2P7hjKC2p/7RbBdXzQFOJkQO4vOlsWnQOYnPl4e1KOekzqrzIr3/TUapqP1DAR+ydfHvx0CyqsYYePEuVTWbz4r4MLK7zH/l8bRYHD7onIYJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwCl9yFTsczHyUogAAAABJRU5ErkJggg==" >
+                                </button>
+                            </th>
 
-        <button onclick="start_timer('left')"> 
-            <img class="start" src="left.png" >
-       </button>
+                            <th>
+                                <button onclick="start_timer('up')">
+                                    <img class="start" src="http://s1.iconbird.com/ico/0912/ToolbarIcons/w256h2561346685452ArrowUp.png">
+                                </button>
+                            </th>
+
+                            <th>
+                                <button onclick="start_timer('right_up')">
+                                    <img class="start"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAALVBMVEX///8BAQEAAACxsbHo6OiGhoazs7OLi4uUlJSMjIyCgoKrq6vx8fF9fX2FhYVGTUUjAAADVklEQVR4nO3d7VLbMBCF4W0gAULg/i+XkQJuCgXb0n6cXc75Tac888pyaGdaEY7jOI4L2fmAMEvhazSuz1J4PPwJH4UUUhjto5BCCimkkEIKKaSQQgoppJBCCimkkEIKKaSQQgopvO5F7685QYWXe51dHseJtkKtnWAbKm0GmEJ4NwPMIJwqmEE4VzCBcBYIL5wGogsnn0F8oQIQWzh/RMGFKkBkoQ4QWKjxDEILlQriCrUKwgrVCqIKFYGYQk0gpFAViCjUu2RAhboFAYXKBfGEewuufzWYcG/BDX9UjCXcXfDwmEu4v+Dpkkq4v+BJ7jMJ9wPvJJVwpGAq4VDBTML9l0wH5hEOFswjHHhNvP/KJMKxS6Yvh3D0GWxLIRx+BtsyCGcKphCOXzJ9+MKpIyoJhBO36HXowtmC8MK5S6YPWzhfEFyoUBBbOH3J9AELNY6oIAt1CgILlQriCic/qt0MVKhWEFWoVxBUqFgQU6jyol8GKFQtiCjULQgo1HrRL0MTKh9RgROqF0QT6hcEE2pfMn1IQouCUELNj2o3wxHaFAQSmjyDbShCq4IwQrOCKEKDF/0yCKHdERUMoWVBCKFpQQSh4SXTFy40LhgvtC4YLrS9ZPpiheZHVIKFDgVjhfbPYFug0Ojnwc+LE3o8g21hQqeCcUKvgmFCn0umL0boVzBI6FgwRujyol8WIPQ8ohIh9C0YIHQu6C90e9Evcxa6F/QW+hd0FgYU9BW6vuiXOQpDCnoKYwo6Cr1f9Mu8hEFHVJrQ5X/pDCsocnk5ruz1PP+7xBV0WtQl4zYW/AJUewZ9FnjJ+Kz8ES0PLH+L8pLJXpC3aPaC5S8ZFswO5CXDguArX5Af1VgQfCyYHciC2YF80bMg+MoX5CWTHciPar8PmOyIlgeWv0V5yWQvyFs0e8HylwwLZgfykmFB8JUvyI9qLAi+5+oF5bxPmA8o8rCHmBEoctxOzAkUedpKTHfJLNt4ULMWbNtEzFuwbQMxc8G2VWJ24CoxP3CFmPsZ/NgPxBrAH179FY7odd9UrAP8pmIl4H8rVnkGP/aFWKtg2yditYJt/xDrFWy7IdYE3hCrAhdiXeD7T/0VL5m/O7Z/X6JuwbaH2gXbzs/R3wHHcRzH2e8NcetMoIgBXgMAAAAASUVORK5CYII=" >
+                                </button>
+                            </th>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <button onclick="start_timer('left')"> 
+                                    <img class="start" src="left.png" >
+                               </button>
+                            </td>
+
+                            <td>
+                                <button  onclick="stop_timer()" id="rev">
+                                    <img src="http://s1.iconbird.com/ico/0612/prettyoffice/w256h2561339405847Delete256.png" class="start">
+                               </button>
+                            </td>
+
+                            <td>
+                                <button onclick="start_timer('right')"> 
+                                    <img class="start" src="right.png" >
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button onclick="start_timer('left_down')">
+                                      <img class="start" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAbFBMVEX///8jHyBqaGkZExUgHB329fUnIyMAAAAJAAAOBQgLAAMKAAFnZWUEAABkYmJta2tgXl5aV1ipqKgzMDFzcXLa2dk/PD3U09MbFheRkJA4NTaFg4MeGRrOzc15eHignp/Av79RT0/o5+i0srMf3BKnAAAEA0lEQVR4nO3cjVbiMBCG4bQUQ6H8/2xBFFzv/x7XSNUCHZsm6WaG8z0X4Ml7kmlAd6sUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiHF+Lhbz/Z/Yy+jN+1rng3KQ67cHbSz0Mbko9Sn2YvqwHCc/HjFxkSd1+uEO6k1gUr7FXlFgy5vAh9vE2x38kO9jLyqk2X1gMpjHXlVA90fUDOIi9rLCaQxMBkXsdQXTdETNHD7HXlgoRGCiz7FXFkjzEU2S4zr2ygJpuCaqLXyPvbQwqCOajB/kOUPuYL6MvbQwrr5NXAVGvguHwzA/Z8YycLha7NaHt/1f/x9FzmDUI7qajspjlpW5fvbdSOqaiLuDG519rWOy89tG+iETM/BV11Yy2Pn8qILlET3rq7WMPT448pxBdTheLSbLnc8p02viRd8ux/VbOM9rQqn97cly/Y7KcwY/bAY3C8rWTjcG1x1UKr0rfHIpXJCBs+BL7ihMYcF2BwMVsp1BI0Qh4yOqghTSDxkOgQEK6RlkcERVgEJ6B3kEehfynkHDs7CYEIFjLoGehSn3I6o8C/l+VKvxKZyNqEA2R1R5FaZkIKMd9CkkZ3DMZwYN50IZR1S5FxZUIJ9rouJYOBdwTVTcCul7kNVD5pNTIT2DDP985lJIXhPsZtBwKCRnkNk1UeleSD9FGR5R5VBIB6b/ackddS2ci5pBo2MhOYMTftdEpVsheU1wPaKqYyF5TYz4BnYqpK8JtkdUdSpM+f9Opol9ocQZNKwLyWtiwvOi/2ZbSM7giPMMGpaF4j7J/LArpL9NsA+0K9yQM8j6KXphU0g/ZAQE2hSmU7lHVNkUzqlAzh/ValoLyRlkf01U2grp74PML/pvLYXCZ9D4vXBDzqCUHWwpFD+Dxm+FD3BE1a+F0q+JCl1IH1EJn2R+kIV0oKgdpAvJGZxI+3+uRCF5TUylBRKF5BGdyrkHvzQWkk9RcUdUNRfS14TAwIbCdUr9i19pT9GLu8IkK6lAeTNo3BdSJM6gYV0o75qo2BYKPaLKulDkU/TCrnC0ib1Od1aFYmfQsCkU+FGtxqJQ8Awa7YWSZ9BoLZyK/KhW01aYyz6iqrWwLIYuYlfVtRRm6ycH68V+GzvsW9spzZyUOZ8XQtl/t+gmG++YnNW+Cs0LKHgk9lfo9QKKgHosTHSA993467OQx2sg+yzk8bbSPguzQ+w6o9dCt1dsBHb35o+Ajl4vLArlRP2bwwB4vKx0S/0NJoDpKnbdp2VvxzQbcRjDj028fY1SMJrHFiq16ilR8/ntx0r3cFCP+jV2V812ORoPgsr14Ry76tr2tEkD2uxfYhcBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8vH82ozQscfb1qAAAAABJRU5ErkJggg==" >
+                                </button>
+                            </td>
+
+                            <td>
+                                 <button onclick="start_timer('down')">
+                                      <img class="start" src="http://s1.iconbird.com/ico/0912/ToolbarIcons/w256h2561346685452ArrowDown.png">
+                                </button>
+                            </td>
+
+                            <td>
+                                <button onclick="start_timer('right_down')">
+                                    <img class="start" src="https://img.lovepik.com/element/40091/3357.png_860.png" >
+                                </button>
+                            </td>
+                        </tr>
+        </table>
 
 
-       <button onclick="start_timer('right')"> 
-                <img class="start" src="right.png" >
-        </button>
-        
-        <button onclick="start_timer('down')">
-                <img class="start" src="http://s1.iconbird.com/ico/0912/ToolbarIcons/w256h2561346685452ArrowDown.png">
-        </button>
-        
-        <button onclick="start_timer('up')">
-                <img class="start" src="http://s1.iconbird.com/ico/0912/ToolbarIcons/w256h2561346685452ArrowUp.png">
-        </button>
-        
 
-       <label>Скорость мяча: <input type="number" value="1" id="speed"></label>
-
-       
-       
     </div>
     
     <div>
-        <img class="ball" src="%D0%BC%D1%8F%D1%87.png" id="ball_image">
+        <div class="buttons_start_stop">
+            <button class="button" onclick="random_course()">
+                    <img class="start" src="start.png">
+            </button>
+            
+            <button   onclick="stop_ball()">
+                    <img class="start" src="stop.png">
+            </button>
+        </div>    
+       
+    </div>
+    
+
+
+    <div>
+         <label>Скорость мяча: <input type="number" value="1" id="speed"></label>
     </div>
 
+
+
+    <div class="border_ball">
+         <img class="ball" src="%D0%BC%D1%8F%D1%87.png" id="ball_image">  
+    </div>
     
     
     
@@ -283,8 +351,8 @@
         
         function update_graphic()
         {
-            saveBall.style.marginTop = marginLeft+"px";
-            saveBall.style.marginLeft = marginTop+"px";
+            saveBall.style.marginTop = marginLeft +"px";
+            saveBall.style.marginLeft = marginTop +"px";
         }
         
         function getRandomInt(min, max) {

@@ -17,8 +17,8 @@
         .ball{
             width: 100px;
             height: 100px;
-            margin-top: 18%;
-            margin-left: 45%;
+            margin-top: 0px;
+            margin-left: 0px;
             margin-right: 0px;
             z-index: 1;
         }
@@ -45,6 +45,11 @@
             height: 550px;
             margin-top: 80px;
             z-index: 1
+        }
+
+        .border2{
+            margin-left: 47%;
+            
         }
         
     </style>
@@ -114,7 +119,7 @@
                             </td>
                         </tr>
         </table>
-
+        
 
 
     </div>
@@ -129,6 +134,28 @@
                     <img class="start" src="stop.png">
             </button>
         </div>    
+
+        <div>
+            <table class="border2" border="1"> 
+                    <tr>
+                        <th>
+                            Top
+                        </th>
+        
+                        <th>
+                            Left
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            g
+                        </th>
+                        <th>
+                            g
+                        </th>
+                    </tr>
+            </table>
+        </div>
        
     </div>
     
@@ -143,6 +170,7 @@
     <div class="border_ball">
          <img class="ball" src="%D0%BC%D1%8F%D1%87.png" id="ball_image">  
     </div>
+
     
     
     
@@ -150,6 +178,9 @@
     
     <script>
         
+        //var pageHeight = document.documentElement.clientWidth;
+	    //alert(pageHeight);
+
         var randomDirection = 0;
         var marginTop = 0; 
         var marginLeft = 0;
@@ -283,16 +314,25 @@
         
         function move_ball_left()
         {
-             marginTop = marginTop - get_speed();
-          
+           // if( parseInt(marginLeft) + 503  > parseInt(document.documentElement.clientWidth) ){
+            //    return;
+            //}else{
+             
+            marginTop = marginTop - get_speed();
             update_graphic();
+          //  }
         }
         
         
         function move_ball_right()
         {
+            //if( parseInt(marginLeft) + 1233  > parseInt(document.documentElement.clientWidth) ){
+              //  return;
+           // }else{
+
             marginTop = marginTop + get_speed();
             update_graphic();
+            //}
         }
         
         function move_ball_down()

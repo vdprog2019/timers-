@@ -52,6 +52,10 @@
             
         }
         
+        .text_area{
+            width: 50px;
+            height: 50px;
+        }
     </style>
     
 </head>
@@ -147,12 +151,12 @@
                         </th>
                     </tr>
                     <tr>
-                        <th>
-                            g
-                        </th>
-                        <th>
-                            g
-                        </th>
+                        <td >
+                            <textarea class="text_area" id="margin_top"></textarea>
+                        </td>
+                        <td>
+                            <textarea class="text_area" id="margin_left"></textarea>
+                        </td>
                     </tr>
             </table>
         </div>
@@ -167,7 +171,7 @@
 
 
 
-    <div class="border_ball">
+    <div class="border_ball" id="border_ball">
          <img class="ball" src="%D0%BC%D1%8F%D1%87.png" id="ball_image">  
     </div>
 
@@ -178,8 +182,12 @@
     
     <script>
         
-        //var pageHeight = document.documentElement.clientWidth;
-	    //alert(pageHeight);
+        var ui_margin_left =  document.getElementById("margin_top");
+        var ui_margin_top =  document.getElementById("margin_left");
+        
+        
+     
+
 
         var randomDirection = 0;
         var marginTop = 0; 
@@ -314,31 +322,40 @@
         
         function move_ball_left()
         {
-           // if( parseInt(marginLeft) + 503  > parseInt(document.documentElement.clientWidth) ){
-            //    return;
-            //}else{
+           
+            if(marginTop < 0 ){
+              return;
+            }else{
              
             marginTop = marginTop - get_speed();
             update_graphic();
-          //  }
+            }
         }
         
         
         function move_ball_right()
         {
-            //if( parseInt(marginLeft) + 1233  > parseInt(document.documentElement.clientWidth) ){
-              //  return;
-           // }else{
+           if(marginTop + (document.getElementById("ball_image").offsetWidth * 1.24) > document.getElementById("border_ball").offsetWidth ){
+              return;
+            }else{
 
             marginTop = marginTop + get_speed();
             update_graphic();
-            //}
+            }
+            
         }
         
         function move_ball_down()
         {
+            
+       
+            if(marginLeft + (document.getElementById("ball_image").offsetHeight * 1.3) > document.getElementById("border_ball").offsetHeight ){
+              return;
+            }else{
+            
             marginLeft = marginLeft + get_speed();
             update_graphic();
+                }
         }
         
         
@@ -393,6 +410,8 @@
         {
             saveBall.style.marginTop = marginLeft +"px";
             saveBall.style.marginLeft = marginTop +"px";
+            ui_margin_left.value = marginLeft;
+            ui_margin_top.value = marginTop;
         }
         
         function getRandomInt(min, max) {
